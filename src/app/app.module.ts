@@ -9,9 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { NgChartsModule } from 'ng2-charts';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ReportesComponent } from './reportes/reportes.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,15 @@ import { HttpClientModule } from '@angular/common/http';
     CartaComponent,
     TableroComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ReportesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
 
     SweetAlert2Module.forRoot(),
-    
+    NgChartsModule,
 
     FormsModule,
     HttpClientModule

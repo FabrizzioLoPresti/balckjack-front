@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.contenedor {
+  max-width: 450px;
+  max-height: 450px;
+}
+
+.contenedor p {
+  text-align: center;
+}
