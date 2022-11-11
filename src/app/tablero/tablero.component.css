@@ -1,0 +1,171 @@
+.tablero {
+  background-image: url(../../assets/images/tablero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  justify-items: center;
+}
+
+.puntaje {
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #000;
+  grid-row: 1 / 2;
+  grid-column: 5 / 6;
+}
+
+.botones {
+  grid-row: 4 / 5;
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.boton {
+  border: none;
+  color: white;
+  padding: 1rem 3.2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.pedir {
+  background-color: #4CAF50;
+}
+
+.plantarse {
+  background-color: #f44336;
+}
+
+.ases {
+  background-color: #d3602e;
+}
+
+.desactivado {
+  background-color: rgb(128, 161, 140);
+  cursor: not-allowed;
+}
+
+.reset {
+  background-color: #2196F3;
+}
+
+.cartasJugador {
+  grid-row: 3 / 4;
+  grid-column: 3 / 4;
+  position: relative;
+}
+
+.position:nth-child(1) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: -5rem;
+  left: -5rem;
+}
+
+.position:nth-child(2) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: -4rem;
+  left: -4rem;
+}
+
+.position:nth-child(3) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: -3rem;
+  left: -3rem;
+}
+
+.position:nth-child(4) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: -2rem;
+  left: -2rem;
+}
+
+.position:nth-child(5) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: -1rem;
+  left: -1rem;
+}
+
+.position:nth-child(6) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: 0rem;
+  left: 0rem;
+}
+
+.position:nth-child(7) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: 1rem;
+  left: 1rem;
+}
+
+.position:nth-child(8) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: 2rem;
+  left: 2rem;
+}
+
+.position:nth-child(9) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: 3rem;
+  left: 3rem;
+}
+
+.position:nth-child(10) {
+  /* flotar elemento */
+  position: absolute;
+  /* posicionamiento */
+  top: 4rem;
+  left: 4rem;
+}
+
+.cartasCroupier {
+  grid-row: 1 / 2;
+  grid-column: 2 / 4;
+  display: flex;
+  flex-direction: row;
+}
+
+.salir {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+.logout {
+  background-color: #f44336;
+  transition-property: background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.logout:hover {
+  background-color: #d3602e;
+}

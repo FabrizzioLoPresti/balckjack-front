@@ -1,0 +1,44 @@
+<div class="vh-100 tablero">
+  <div class="salir">
+    <button 
+      class="boton logout" 
+      [swal]="{ title: '¿Estas seguro de que quieres salir?', showDenyButton: true, confirmButtonText: 'Si', denyButtonText: 'No'}"
+      (confirm)="logout()"
+    >
+      Logout
+    </button>
+  </div>
+  <div class="puntaje">
+    <p>Tu Puntaje: {{puntajeJugador}}</p>
+    <p>Crupier: {{puntajeCrupier}}</p>
+    <button 
+      class="boton reset" 
+      [swal]="{ title: '¿Estas seguro de que quieres reiniciar?', showDenyButton: true, confirmButtonText: 'Si', denyButtonText: 'No' }"
+      (confirm)="reiniciar()"
+    >
+      Reiniciar
+    </button>
+  </div>
+  <div class="cartasCroupier">
+    <div class="positionCrupier" *ngFor="let carta of cartasCrupier">
+      <app-carta [carta]="carta" ></app-carta>
+    </div>
+  </div>
+  <div class="cartasJugador">
+    <div class="position" *ngFor="let carta of cartasJugador">
+      <app-carta [carta]="carta"></app-carta>
+    </div>
+  </div>
+  <div class="botones">
+    <button (click)="pedirCartaJugador()" class="boton pedir" [class.desactivado]="activo" [disabled]="activo">Pedir</button>
+    <button (click)="plantarse()" class="boton plantarse">Plantarse</button>
+    <button 
+      class="boton ases" 
+      [swal]="{ title: '¿Quieres que el as valga 11?', showDenyButton: true, confirmButtonText: 'Si', denyButtonText: 'No' }"
+      (confirm)="logicaAses(true)"
+      (deny)="logicaAses(false)"
+    >
+      Ases
+    </button>
+  </div>
+</div>
