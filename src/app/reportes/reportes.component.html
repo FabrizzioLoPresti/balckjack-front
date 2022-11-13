@@ -2,31 +2,19 @@
 <div class="grid mt-5 mx-5">
   <div class="contenedor">
     <p>Cantidad de partidas jugadas semanales</p>
-    <canvas
-      baseChart
-      type="bar"
-      [data]="datos"
-    >
+    <canvas id="barras">
     </canvas>
   </div>
   
   <div class="contenedor">
     <p>Proporcion de victorias</p>
-    <canvas
-      baseChart
-      type="pie"
-      [data]="datosTorta"
-    >
+    <canvas id="pieVictorias">
     </canvas>
   </div>
 
   <div class="contenedor">
     <p>Promedio de jugadas con puntaje 21</p>
-    <canvas
-      baseChart
-      type="pie"
-      [data]="datosTorta"
-    >
+    <canvas id="pieVictorias21">
     </canvas>
   </div>
 </div>
