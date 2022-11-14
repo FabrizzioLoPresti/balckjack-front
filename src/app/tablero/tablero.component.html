@@ -18,6 +18,14 @@
     >
       Reiniciar
     </button>
+
+    <button 
+      class="boton reportes" 
+      [swal]="{ title: '¿Estas seguro de que quieres ver los reportes?', showDenyButton: true, confirmButtonText: 'Si', denyButtonText: 'No' }"
+      (confirm)="reportes()"
+    >
+      Reportes
+    </button>
   </div>
   <div class="cartasCroupier">
     <div class="positionCrupier" *ngFor="let carta of cartasCrupier">

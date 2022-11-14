@@ -61,6 +61,11 @@
   background-color: #2196F3;
 }
 
+.reportes {
+  background-color: #f44336;
+  margin-top: 1rem;
+}
+
 .cartasJugador {
   grid-row: 3 / 4;
   grid-column: 3 / 4;

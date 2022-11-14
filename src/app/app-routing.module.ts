@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'reportes',
     component: ReportesComponent
+  },
+  {
+    path: 'reportes',
+    component: ReportesComponent
   }
 ];
 

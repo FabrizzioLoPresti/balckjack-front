@@ -21,6 +21,7 @@ export class TableroComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.idUsuario = Number(localStorage.getItem('idUsuario'));
+    console.log(this.idUsuario);
     this.comenzarJuego();
   }
 
@@ -198,6 +199,10 @@ export class TableroComponent implements OnInit, OnDestroy {
         this.activo = false;
       }
     });
+  }
+
+  reportes(){
+    this.router.navigate(['/reportes']);
   }
 
   logout(): void {
