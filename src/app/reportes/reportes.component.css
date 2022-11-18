@@ -15,3 +15,15 @@
 .contenedor p {
   text-align: center;
 }
+
+.boton {
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 1rem 3.2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.4rem;
+  cursor: pointer;
+}

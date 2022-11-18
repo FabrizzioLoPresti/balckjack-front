@@ -70,42 +70,61 @@ export class TableroComponent implements OnInit, OnDestroy {
     });
   }
 
+  validarMazo(carta:Carta, player:String): boolean {
+    // validad que no se repita la carta en el mazo dependiendo del jugador
+    if(player == 'jugador'){
+      return this.cartasJugador.some(c => c.valor == carta.valor && c.naipe == carta.naipe);
+    }
+    if(player == 'crupier'){
+      return this.cartasCrupier.some(c => c.valor == carta.valor && c.naipe == carta.naipe);
+    }
+    return false;
+  }
+
   pedirCartaJugador(): void {
+    let cartaJugador;
     this.cartasService.getCarta(1).subscribe((carta) => {
-      this.cartasJugador.push(carta);
-      this.calcularPuntos();
-      this.logicaJugador();
+      cartaJugador = carta;
+      if(this.validarMazo(cartaJugador, 'jugador')) {
+        this.pedirCartaJugador()
+      } else {
+        this.cartasJugador.push(cartaJugador);
+        this.calcularPuntos();
+        this.logicaJugador();
+      }
     });
   }
 
   pedirCartaCrupier(): void {
+    let cartaCrupier;
     this.cartasService.getCarta(2).subscribe((carta) => {
-      this.cartasCrupier.push(carta);
-      this.logicaAsesCrupier();
-      this.calcularPuntos();
+      cartaCrupier = carta;
+      if(this.validarMazo(cartaCrupier, 'crupier')) {
+        this.pedirCartaCrupier()
+      } else {
+        this.cartasCrupier.push(cartaCrupier);
+        this.logicaAsesCrupier();
+        this.calcularPuntos();
+      }
     });
   }
 
   logicaJugador(): void {
-    this.cartasService.logicaJugador().subscribe((resp) => {
-      if (resp) {
-        this.activo = true;
-        this.logicaCrupier();
-      }
-    });
+    if(this.puntajeJugador > 21){
+      this.activo = true;
+      this.logicaCrupier();
+    }
   }
 
   logicaCrupier(): void {
-    this.cartasService.logicaCrupier().subscribe((resp) => {
-      if (resp) {
-        this.pedirCartaCrupier();
-        setTimeout(() => {
-          this.logicaCrupier();
-        }, 1000);
-      } else {
-        this.calcularGanador();
-      }
-    });
+    if(this.puntajeCrupier < 17){
+      this.pedirCartaCrupier();
+      setTimeout(() => {
+        this.logicaCrupier();
+      }, 1000);
+    } else {
+      this.calcularGanador();
+    }
   }
 
   logicaAses(des: boolean): void {
@@ -118,6 +137,7 @@ export class TableroComponent implements OnInit, OnDestroy {
         }
       }
     });
+    console.log(this.cartasJugador);
     this.calcularPuntos();
   }
 
@@ -141,37 +161,47 @@ export class TableroComponent implements OnInit, OnDestroy {
 
   calcularPuntos(): void {
     this.puntajeJugador = 0;
-    this.cartasService.calcPuntos(1).subscribe((puntos) => {
-      this.puntajeJugador = puntos;
-    });
     this.puntajeCrupier = 0;
-    this.cartasService.calcPuntos(2).subscribe((puntos) => {
-      this.puntajeCrupier = puntos;
+    this.cartasJugador.forEach((carta) => {
+      this.puntajeJugador += carta.valor;
+    });
+    this.cartasCrupier.forEach((carta) => {
+      this.puntajeCrupier += carta.valor;
     });
   }
 
   calcularGanador(): void {
-    this.cartasService.getGanador().subscribe((ganador) => {
-      if (ganador == 1) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Perdiste',
-          text: 'Mala suerte, vuelve a intentarlo',
-        });
-      } else if (ganador == 2) {
-        Swal.fire({
-          icon: 'success',
-          title: 'Ganaste',
-          text: 'Felicidades, has ganado',
-        });
-      } else if (ganador == 0) {
-        Swal.fire({
-          icon: 'warning',
-          title: 'Empate',
-          text: 'No hay ganador',
-        });
-      }
-    });
+    if(this.puntajeJugador > 21){
+      Swal.fire({
+        icon: 'error',
+        title: 'Perdiste',
+        text: 'Mala suerte, vuelve a intentarlo',
+      })
+    } else if(this.puntajeCrupier > 21){
+      Swal.fire({
+        icon: 'success',
+        title: 'Ganaste',
+        text: 'Felicidades, has ganado',
+      })
+    } else if(this.puntajeJugador > this.puntajeCrupier){
+      Swal.fire({
+        icon: 'success',
+        title: 'Ganaste',
+        text: 'Felicidades, has ganado',
+      })
+    } else if(this.puntajeJugador < this.puntajeCrupier){
+      Swal.fire({
+        icon: 'error',
+        title: 'Perdiste',
+        text: 'Mala suerte, vuelve a intentarlo',
+      })
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Empate',
+        text: 'No hay ganador',
+      })
+    }
   }
 
   reiniciar(): void {
