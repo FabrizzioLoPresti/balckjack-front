@@ -179,6 +179,7 @@ export class TableroComponent implements OnInit, OnDestroy {
           text: 'No hay ganador',
         });
       }
+      console.log(this.idUsuario);
       this.cartasService.guardarEstadisticas(this.idUsuario).subscribe();
     });
   }
