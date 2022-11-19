@@ -74,4 +74,22 @@ export class CartasService {
         return this.http.get(url, { headers })
   }
 
+  guardarEstadisticas(id: number): Observable<any>{
+    const url = this.APIUrl + "guardarResultado/" + id;
+        const headers = { 'Content-Type': 'application/json' };
+        return this.http.post(url, { headers })
+  }
+
+  logicaAsesJugador(opcion: number): Observable<any>{
+    const url = this.APIUrl + "logicaJugador/" + opcion;
+        const headers = { 'Content-Type': 'application/json' };
+        return this.http.post(url, { headers })
+  }
+
+  logicaAsesCrupier(): Observable<any>{
+    const url = this.APIUrl + "logicaAsesCrupier";
+        const headers = { 'Content-Type': 'application/json' };
+        return this.http.post(url, { headers })
+  }
+
 }

@@ -43,8 +43,8 @@
     <button 
       class="boton ases" 
       [swal]="{ title: '¿Quieres que el as valga 11?', showDenyButton: true, confirmButtonText: 'Si', denyButtonText: 'No' }"
-      (confirm)="logicaAses(true)"
-      (deny)="logicaAses(false)"
+      (confirm)="logicaAses(1)"
+      (deny)="logicaAses(2)"
     >
       Ases
     </button>
