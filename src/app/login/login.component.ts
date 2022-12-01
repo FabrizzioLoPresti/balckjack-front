@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     this.usuarioService.login(this.usuario.email, this.usuario.password).subscribe(data => {
       if(data != 0) {
-        localStorage.setItem('idUsuario', data.idUsario.toString());
+        localStorage.setItem('x-access-token', data.idUsario.toString());
         console.log(data);
         this.router.navigate(['/game']);
       } else {

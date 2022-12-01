@@ -26,7 +26,9 @@ export class RegistroComponent implements OnInit {
 
     this.usuarioService.registrar(this.usuario.email, this.usuario.password).subscribe(data => {
       if(data) {
-        this.router.navigate(['']);
+        localStorage.setItem('x-access-token', data.idUsario.toString());
+        console.log(data);
+        this.router.navigate(['/game']);
       } else {
         alert('Error');
       }

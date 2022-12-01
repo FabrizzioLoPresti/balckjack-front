@@ -26,7 +26,8 @@ export class UsuarioService {
   login(usuario: string, password: string): Observable<any> {
     // post de usuario y contraseña enviando headers
     const url = `${this.APIUrl}usuario/login`;
-    const headers = { 'Content-Type': 'application/json' };
+    const token = localStorage.getItem('x-access-token') || '';
+    const headers = { 'Content-Type': 'application/json', 'x-access-token': token };
     return this.http.post(url, { usuario, password }, { headers })
 
   }
