@@ -247,7 +247,16 @@ export class TableroComponent implements OnInit, OnDestroy {
   }
 
   reportes(){
-    this.reiniciar();
+    this.cartasService.reset().subscribe((data) => {
+      console.log(data);
+      if (data) {
+        this.cartasJugador = [];
+        this.cartasCrupier = [];
+        this.puntajeJugador = 0;
+        this.puntajeCrupier = 0;
+        this.activo = false;
+      }
+    });
     this.router.navigate(['/reportes']);
   }
 
